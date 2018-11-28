@@ -8,6 +8,7 @@ CCPATH	= $(RISCV)
 TARGET=$(CCPATH)/bin/riscv${RISCV_XLEN}-unknown-${RISCV_LIB}
 #-----------------------------------------------------------
 GCC		= $(TARGET)-gcc
+CLANG		?= /home/luis/llvm/build/bin/clang
 OBJCOPY	= $(TARGET)-objcopy
 OBJDUMP	= $(TARGET)-objdump
 AR		= $(TARGET)-ar

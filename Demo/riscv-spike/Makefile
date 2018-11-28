@@ -100,7 +100,7 @@ INCLUDES = \
 CFLAGS = \
 	$(WARNINGS) $(INCLUDES) \
 	-fomit-frame-pointer -fno-strict-aliasing -fno-builtin \
-	-D__gracefulExit -mcmodel=medany #-fPIC
+	-D__gracefulExit #-mcmodel=medany #-fPIC
 
 GCCVER 	= $(shell $(GCC) --version | grep gcc | cut -d" " -f9)
 
@@ -122,7 +122,7 @@ LIBS	 = -L$(CCPATH)/lib/gcc/$(TARGET)/$(GCCVER) \
 
 %.o: %.c
 	@echo "    CC $<"
-	@$(GCC) -c $(CFLAGS) -o $@ $<
+	$(CLANG) -c --target=riscv32 -mabi=ilp32 $(CFLAGS) -o $@ $<
 
 %.o: %.S
 	@echo "    CC $<"
